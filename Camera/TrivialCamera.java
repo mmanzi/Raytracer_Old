@@ -8,11 +8,11 @@ import Utility.RGBColor;
 import Utility.Ray;
 
 /**
- * TO BE IMPLEMENTED!
- */
-public class PinholeCamera extends Camera{
+* trivial Camera a pinhole camera positioned at the origin and looking towards the negative z axis
+**/
+public class TrivialCamera extends Camera{
 
-	public PinholeCamera(Point3f eye, Point3f lookat, Vector3f up, int hres, int vres) {
+	public TrivialCamera(Point3f eye, Point3f lookat, Vector3f up, int hres, int vres) {
 		super(eye, lookat, up, hres, vres);
 	}
 
