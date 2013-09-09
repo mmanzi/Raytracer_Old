@@ -12,27 +12,31 @@ import Utility.RGBColor;
  *
  */
 
-public class TrivialLight extends Light{
+public class MovableLight extends Light{
 
+	Vector3f location;
+	RGBColor color;
 	
-	public TrivialLight(){
+	public MovableLight(Vector3f p, RGBColor c){
+		location = p;
+		color = c;	
 	}
 	
 	@Override
 	public Vector3f getIncomingRay(Point3f p) {
-		return new Vector3f(p);
+		Vector3f v = new Vector3f(p);
+		v.sub(location);
+		return v;
 	}
-	
-	
 	
 	@Override
 	public RGBColor getColor() {
-		return new RGBColor(1.f,1.f,1.f);
+		return new RGBColor(color);
 	}
 
 	@Override
 	public float getAttenuation(float d) {
-		return 1.f;
+		return 1.f/(d*d);
 	}
 
 }

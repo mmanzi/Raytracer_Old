@@ -1,6 +1,5 @@
 package Material;
 
-import javax.vecmath.Vector3f;
 
 import Light.Light;
 import Utility.HitRecord;

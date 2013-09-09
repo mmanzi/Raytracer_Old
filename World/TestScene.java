@@ -37,16 +37,19 @@ public class TestScene extends World{
 		rt = new MultipleObjects(this);
 		
 		//Add objects
-		Material redMat = new TrivialMaterial(new RGBColor(1f, 0f, 0f));
+		Material redMat = new PhongMaterial(new RGBColor(1f, 0.5f, 0f), new RGBColor(0.5f, 0.5f, 1f), new RGBColor(0f, 1f, 0.5f), 30f);
+				
 		Sphere sphere = new Sphere(redMat, new Point3f(0f, 0f, -4.0f), 1.f);
 		objects.add(sphere);
 		
-		Material blueMat = new TrivialMaterial(new RGBColor(0.5f, 0.5f, 1.f));
-		Plane bluePlane = new Plane(blueMat, new Point3f(0.1f,-0.1f,0.f), new Vector3f(0.f, 1.f, 0.f));
+		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
+		Plane bluePlane = new Plane(blueMat, new Point3f(0.f,-0.5f,0.f), new Vector3f(0.f, 1.f, 0.f));
 		objects.add(bluePlane);
-		
+
 		//Add light sources
-		Light light = new TrivialLight();
-		lights.add(light);
+		//Light light = new MovableLight(new Vector3f(0.f,0.f,-2.5f),new RGBColor(0.2f,0.2f,0.8f));
+		//lights.add(light);
+		Light lightd = new DirectionalLight(new Vector3f(1.f,1.f,-2.5f),new RGBColor(0.5f,0.8f,0.8f));
+		lights.add(lightd);
 	}
 }

@@ -17,5 +17,7 @@ public abstract class Light {
 
 	public abstract Vector3f getIncomingRay(Point3f p);
 	
+	public abstract float getAttenuation(float d);
+	
 	public abstract RGBColor getColor();
 }
