@@ -20,15 +20,16 @@ public class TestScene extends World{
 	protected void build(){
 		
 		//define image resolution
-		hres = 1000;
+		hres = 2000;
 		vres = 1000;
 		
 		//define camera
-		camera = new TrivialCamera(new Point3f(0.f, 0.f, 0.f), 		// eye
-										new Point3f(0.f,0.f,-1.f),  // look-at
-										new Vector3f(1.f,0.f,0.f),	//up
+		camera = new PinholeCamera(new Point3f(0.f, 5.f, 5.f), 		// eye
+										new Point3f(0.f, -2.f, -4.f),  // look-at
+										new Vector3f(0.f, -1.f,0.f),	//up
 										hres,						//horizontal resolution
-										vres); 						//vertical resolution
+										vres,						//vertical resolution
+										Math.PI / 4); 						
 		
 		//define background color
 		background_color = new RGBColor(0.1f,0.1f,0.1f);

@@ -6,7 +6,7 @@ import javax.vecmath.Vector3f;
 import Material.Material;
 import Utility.HitRecord;
 import Utility.Ray;
-
+import utils.VectorUtils;
 public class Sphere extends GeometricObject {
 
 	Point3f center;
@@ -23,8 +23,8 @@ public class Sphere extends GeometricObject {
 		HitRecord hit = new HitRecord();
 		float a = ray.direction.dot(ray.direction);
 
-		Vector3f vectorCE = createVectorAB(center, ray.origin);
-		Vector3f doubleDirection = doubleVector(ray.direction);
+		Vector3f vectorCE = VectorUtils.createVectorAB(center, ray.origin);
+		Vector3f doubleDirection = VectorUtils.doubleVector(ray.direction);
 		float b = doubleDirection.dot(vectorCE);
 
 		float c = (float) (vectorCE.dot(vectorCE) - radius * radius);
@@ -54,24 +54,12 @@ public class Sphere extends GeometricObject {
 			hitPoint.add(ray.origin);
 			
 			// record hit
-			Vector3f surfaceNormal = createVectorAB(center, hitPoint);
+			Vector3f surfaceNormal = VectorUtils.createVectorAB(center, hitPoint);
 			surfaceNormal.normalize();
 			hit.recordHit(this, ray, surfaceNormal, hitPoint, t);
 		}
 
 		return hit;
-	}
-
-	private Vector3f doubleVector(Vector3f vec) {
-		Vector3f doubleDirection = new Vector3f(vec);
-		doubleDirection.scale(2);
-		return doubleDirection;
-	}
-
-	private Vector3f createVectorAB(Point3f pointA, Point3f pointB) {
-		Vector3f vectorAB = new Vector3f(pointB);
-		vectorAB.sub(pointA);
-		return vectorAB;
 	}
 
 }

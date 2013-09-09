@@ -40,7 +40,8 @@ public class MultipleObjects extends Tracer{
 				color.add(hit.shade(lightItr.next()));
 			return color;
 		}
-		else
+		else {
 			return world_ptr.getBackgroundColor();
+		}
 	}
 }
