@@ -12,22 +12,26 @@ import Utility.RGBColor;
  *
  */
 
-public class TrivialLight extends Light{
+public class DirectionalLight extends Light{
 
+	Vector3f direction;
+	RGBColor color;
 	
-	public TrivialLight(){
+	public DirectionalLight(Vector3f p, RGBColor c){
+		direction = p;
+		direction.normalize();
+		color = c;	
 	}
 	
 	@Override
 	public Vector3f getIncomingRay(Point3f p) {
-		return new Vector3f(p);
+		
+		return direction;
 	}
-	
-	
 	
 	@Override
 	public RGBColor getColor() {
-		return new RGBColor(1.f,1.f,1.f);
+		return new RGBColor(color);
 	}
 
 	@Override

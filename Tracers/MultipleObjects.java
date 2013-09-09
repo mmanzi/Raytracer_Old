@@ -24,16 +24,19 @@ public class MultipleObjects extends Tracer{
 		//tracing
 		HitRecord hit = new HitRecord();
 		Iterator<GeometricObject> objItr= world_ptr.getObjectIterator();	
+		
 		while(objItr.hasNext()){
 			HitRecord new_hit = objItr.next().hit(ray);
 			if(hit.getHitDist()>new_hit.getHitDist()) 
 				hit = new_hit;
 		}		
+		
 		//shading
 		if(hit.anyHit()){
 			RGBColor color = new RGBColor();
 			Iterator<Light> lightItr= world_ptr.getLightIterator();
 			while(lightItr.hasNext())
+				// intersection mit ray.origin = hit.getHitPos() ray.direction = hit.get
 				color.add(hit.shade(lightItr.next()));
 			return color;
 		}
