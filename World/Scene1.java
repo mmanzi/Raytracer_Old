@@ -14,7 +14,7 @@ import Tracers.*;
  * @author mmanzi
  *
  */
-public class TestScene extends World{
+public class Scene1 extends World{
 
 	
 	protected void build(){
@@ -24,8 +24,8 @@ public class TestScene extends World{
 		vres = 1000;
 		
 		//define camera
-		camera = new PinholeCamera(new Point3f(0.f, 5.f, 5.f), 		// eye
-										new Point3f(0.f, -2.f, -4.f),  // look-at
+		camera = new PinholeCamera(new Point3f(0.f, 0.f, 0.f), 		// eye
+										new Point3f(0.f, 0.f, -1.f),  // look-at
 										new Vector3f(0.f, -1.f,0.f),	//up
 										hres,						//horizontal resolution
 										vres,						//vertical resolution

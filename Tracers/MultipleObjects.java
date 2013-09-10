@@ -52,7 +52,9 @@ public class MultipleObjects extends Tracer {
 				}
 			}
 			return color;
-		} else
+		}
+		else {
 			return world_ptr.getBackgroundColor();
+		}
 	}
 }
