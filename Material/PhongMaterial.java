@@ -29,7 +29,7 @@ public  class PhongMaterial extends Material{
 	 **/
 	@Override
 	public RGBColor shade(HitRecord hit, Light l) {
-		RGBColor erg=new RGBColor(0,0,0);
+		RGBColor erg=new RGBColor(0f,0f,0f);
 		
 		RGBColor lc = new RGBColor(l.getColor());
 		RGBColor diffusec = new RGBColor(diffusecolor);

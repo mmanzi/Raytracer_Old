@@ -37,8 +37,8 @@ public class Scene2 extends World{
 		//define used ray tracer
 		
 		//Add objects
-		Material redMat = new MirrorPhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f,0.5f,t);
-		//Material redMat = new PhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f);
+		//Material redMat = new MirrorPhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f,0.5f,t);
+		Material redMat = new PhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f);
 			
 	//	Material redMat = new DiffuseMaterial(new RGBColor(1.f, 0.5f, 0f));
 		
@@ -49,7 +49,7 @@ public class Scene2 extends World{
 		Sphere sphere2 = new Sphere(redMat, new Point3f(0f, -3.f, -6.5f), 0.5f);
 		objects.add(sphere2);
 		
-		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
+		//Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
 //		Plane bluePlane = new Plane(blueMat, new Point3f(0.f,-0.5f,0.f), new Vector3f(0.f, 1.f, 0.f));
 //		objects.add(bluePlane);
 
