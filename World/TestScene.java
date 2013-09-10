@@ -17,9 +17,7 @@ import Tracers.*;
 public class TestScene extends World{
 
 	
-	protected void build(){
-		long millis = System.currentTimeMillis();
-		
+	protected void build(Tracer t){
 		//define image resolution
 		hres = 1000;
 		vres = 1000;
@@ -33,7 +31,7 @@ public class TestScene extends World{
 										Math.PI / 4); 						
 		
 		//define background color
-		background_color = new RGBColor(0.1f,0.1f,0.1f);
+		background_color = new RGBColor(0.5f,0.5f,0.1f);
 		
 		//define used ray tracer
 		rt = new MultipleObjects(this);
@@ -57,9 +55,7 @@ public class TestScene extends World{
 		//Add light sources
 		//Light light = new MovableLight(new Vector3f(0.f,0.f,-2.5f),new RGBColor(0.2f,0.2f,0.8f));
 		//lights.add(light);
-		Light lightd = new DirectionalLight(new Vector3f(1.f,1.f,-2.5f),new RGBColor(0.5f,0.8f,0.8f));
+		Light lightd = new DirectionalLight(new Vector3f(0.f,1.f,1.f),new RGBColor(0.8f,0.8f,0.8f));
 		lights.add(lightd);
-		
-		System.out.println("MS: " + (System.currentTimeMillis() - millis));
 	}
 }

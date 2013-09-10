@@ -27,16 +27,17 @@ public abstract class World {
 	/**
 	 * This abstract method should be used in subclasses to setup the scene!
 	 */
-	protected abstract void build();
+	protected abstract void build(Tracer t);
 	
 	/**
 	 * constructor, called by main-method in Run. 
 	 * Note that only the resolution must be passed, all the rest is done in the build() method
 	 */
 	public World(){
+		rt=new MultipleObjects(this);
 		objects = new LinkedList<AbstractGeometricObject>();
 		lights = new LinkedList<Light>();
-		build();
+		build(rt);
 	}
 	
 	/**
@@ -49,7 +50,6 @@ public abstract class World {
 			return camera.renderScene(img, rt);
 		return img;
 	}
-
 	/**
 	 * getter functions for different world content
 	 */

@@ -6,22 +6,24 @@ import Light.Light;
 import Tracers.Tracer;
 import Utility.HitRecord;
 import Utility.RGBColor;
+import Utility.Ray;
 
 /**
  *  A trivial unicolor material
  */
-public  class PhongMaterial extends Material{
+public  class MirrorPhongMaterial extends Material{
 
 	RGBColor diffusecolor,ambientcolor,specularcolor;
 	float shininess;
-	public float reflectivity=0f;
+	Tracer trace;
 	
-	public PhongMaterial(RGBColor dcolor,RGBColor acolor,RGBColor scolor,float s){
+	public MirrorPhongMaterial(RGBColor dcolor,RGBColor acolor,RGBColor scolor,float s,float r,Tracer t){
 		this.diffusecolor = dcolor;
 		this.ambientcolor = acolor;
 		this.specularcolor = scolor;
 		this.shininess = s;
-		this.reflectivity=0f;
+		this.reflectivity=r;
+		this.trace=t;
 	}
 	
 	/**
@@ -53,19 +55,23 @@ public  class PhongMaterial extends Material{
 		
 		specularc.mult((float)Math.pow(h.dot(n),shininess));
 		specularc.mult(lc);
-		
 		erg.add(specularc);
-		
 		erg.add(ambientcolor);
-		
 		
 		return erg;
 	}
 
 	@Override
 	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
-		return new RGBColor(0f,0f,0f);
+		
+		Vector3f v=new Vector3f(hit.getNormal());
+		v.scale((-2*(hit.getRay().direction).dot(hit.getNormal())));
+		v.add(hit.getRay().direction);
+		Ray ray=new Ray(hit.getHitPos(),v);
+		
+		return new RGBColor(t.trace(ray));
 	}
+	
 
 
 }

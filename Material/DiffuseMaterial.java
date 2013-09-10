@@ -3,6 +3,7 @@ package Material;
 import javax.vecmath.Vector3f;
 
 import Light.Light;
+import Tracers.Tracer;
 import Utility.HitRecord;
 import Utility.RGBColor;
 
@@ -12,9 +13,11 @@ import Utility.RGBColor;
 public  class DiffuseMaterial extends Material{
 
 	RGBColor color;
+	public float reflectivity=0f;
 	
 	public DiffuseMaterial(RGBColor color){
 		this.color = color;
+		this.reflectivity=0f;
 	}
 	
 	/**
@@ -28,10 +31,14 @@ public  class DiffuseMaterial extends Material{
 		Vector3f theta = new Vector3f(l.getIncomingRay(hit.getHitPos()));
 		mc.mult(l.getAttenuation(theta.length()));
 		theta.normalize();
-		n.negate();
 		mc.mult(lc);
-		mc.mult(Math.abs(n.dot(theta)));
+		mc.mult(Math.max(n.dot(theta),0));
 		return mc;
+	}
+
+	@Override
+	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
+		return new RGBColor(0f,0f,0f);
 	}
 
 

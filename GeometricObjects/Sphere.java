@@ -20,6 +20,7 @@ public class Sphere extends AbstractGeometricObject {
 
 	@Override
 	public HitRecord hit(Ray ray) {
+
 		HitRecord hit = new HitRecord();
 		float a = ray.direction.dot(ray.direction);
 

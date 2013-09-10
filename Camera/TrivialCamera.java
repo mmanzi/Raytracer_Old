@@ -21,8 +21,8 @@ public class TrivialCamera extends Camera{
 	
 	public RGBColor[][] renderScene(RGBColor[][] img, Tracer rt) {
 		Ray ray = new Ray();		
-		for(int x=0; x<hres; x++) 
-			for(int y=0; y<vres; y++){
+		for(int x=0; x<horizontalResolution; x++) 
+			for(int y=0; y<verticalResolution; y++){
 				ray = generateRay(x,y);			
 				img[x][y] = rt.trace(ray);
 			}
@@ -32,7 +32,7 @@ public class TrivialCamera extends Camera{
 	private Ray generateRay(int x, int y){
 		Ray ray = new Ray();
 		ray.origin = new Point3f(0.f,0.f,0.f);
-		ray.direction = new Vector3f((x+0.5f)/hres - 0.5f, -(y+0.5f)/vres + 0.5f, -1);
+		ray.direction = new Vector3f((x+0.5f)/horizontalResolution - 0.5f, -(y+0.5f)/verticalResolution + 0.5f, -1);
 		return ray;
 	}
 }
