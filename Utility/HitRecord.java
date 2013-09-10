@@ -60,7 +60,15 @@ public class HitRecord {
 	}
 	
 	public float getreflectivity(){
-		return obj.getMaterial().getreflectivity();
+		return obj.getMaterial().reflectivity;
+	}
+	
+	public RGBColor refrectionshade(Tracer t){
+		return obj.getMaterial().refractionshade(this,t);
+	}
+	
+	public float getrefractivity(){
+		return obj.getMaterial().refractivity;
 	}
 	
 	/**
@@ -88,5 +96,7 @@ public class HitRecord {
 	public Ray getRay(){
 		return ray;
 	}
+
+	
 
 }
