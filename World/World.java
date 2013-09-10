@@ -20,7 +20,7 @@ public abstract class World {
 	int vres;							//vertical resolution
 	RGBColor background_color;			//color of the background (returned color for a ray who intersects nothing)
 	Tracer rt;							//the ray-tracer that is used to render the scene
-	LinkedList<GeometricObject> objects;//a list of all objects in the scene
+	LinkedList<AbstractGeometricObject> objects;//a list of all objects in the scene
 	LinkedList<Light> lights;			//a list of all light-sources in the scene
 	Camera camera;						//the camera from which one we see the scene, the camera also generates the rays
 	
@@ -34,7 +34,7 @@ public abstract class World {
 	 * Note that only the resolution must be passed, all the rest is done in the build() method
 	 */
 	public World(){
-		objects = new LinkedList<GeometricObject>();
+		objects = new LinkedList<AbstractGeometricObject>();
 		lights = new LinkedList<Light>();
 		build();
 	}
@@ -53,7 +53,7 @@ public abstract class World {
 	/**
 	 * getter functions for different world content
 	 */
-	public Iterator<GeometricObject> getObjectIterator(){
+	public Iterator<AbstractGeometricObject> getObjectIterator(){
 		return objects.iterator();
 	}	
 	public Iterator<Light> getLightIterator(){

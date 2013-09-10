@@ -7,7 +7,7 @@ import Material.Material;
 import Utility.HitRecord;
 import Utility.Ray;
 
-public class Plane extends GeometricObject{
+public class Plane extends AbstractGeometricObject{
 
 	Point3f point;
 	Vector3f normal;

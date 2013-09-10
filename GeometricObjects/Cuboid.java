@@ -3,19 +3,22 @@ package GeometricObjects;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
+import utils.VectorUtils;
 import Material.Material;
 import Utility.HitRecord;
 import Utility.Ray;
-import utils.VectorUtils;
-public class Sphere extends AbstractGeometricObject {
 
-	Point3f center;
-	float radius;
+public class Cuboid extends AbstractGeometricObject{
 
-	public Sphere(Material mat, Point3f center, float radius) {
+	Point3f origin;
+	float length, width, height;
+	
+	public Cuboid(Material mat, Point3f origin, float length, float width, float height) {
 		super(mat);
-		this.center = center;
-		this.radius = radius;
+		this.origin = origin;
+		this.length = length;
+		this.width = width;
+		this.height = height;
 	}
 
 	@Override
@@ -24,7 +27,7 @@ public class Sphere extends AbstractGeometricObject {
 		float a = ray.direction.dot(ray.direction);
 
 		Vector3f vectorCE = VectorUtils.createVectorAB(center, ray.origin);
-		Vector3f doubleDirection = VectorUtils.scaleVector(ray.direction, 2);
+		Vector3f doubleDirection = VectorUtils.doubleVector(ray.direction);
 		float b = doubleDirection.dot(vectorCE);
 
 		float c = (float) (vectorCE.dot(vectorCE) - radius * radius);
@@ -33,10 +36,10 @@ public class Sphere extends AbstractGeometricObject {
 
 		Float t = null;
 		if (discriminant == 0) {
-			t = -b / (2 * a);
+			t = -b / 2 * a;
 		} else if (discriminant > 0) {
-			float t1 = (-b - (float) Math.sqrt(discriminant)) / (2 * a);
-			float t2 = (-b + (float) Math.sqrt(discriminant)) / (2 * a);
+			float t1 = (-b - (float) Math.sqrt(discriminant)) / 2 * a;
+			float t2 = (-b + (float) Math.sqrt(discriminant)) / 2 * a;
 
 			if (t1 > 0 || t2 > 0) {
 				float closerT = Math.min(t1, t2);

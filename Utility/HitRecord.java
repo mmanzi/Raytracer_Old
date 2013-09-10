@@ -3,7 +3,7 @@ package Utility;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
-import GeometricObjects.GeometricObject;
+import GeometricObjects.AbstractGeometricObject;
 import Light.Light;
 
 /**
@@ -17,7 +17,7 @@ public class HitRecord {
 	private Ray ray;
 	private Point3f position;
 	private Vector3f normal;
-	private GeometricObject obj;
+	private AbstractGeometricObject obj;
 	private boolean anyHit;
 	
 	/**
@@ -37,7 +37,7 @@ public class HitRecord {
 	 * @param p			the position of the intersection point in world space
 	 * @param t			the distance between the rays origin and the intersection point
 	 */
-	public void recordHit(GeometricObject obj, Ray charles, Vector3f n, Point3f p, float t){
+	public void recordHit(AbstractGeometricObject obj, Ray charles, Vector3f n, Point3f p, float t){
 		this.obj = obj;
 		this.ray = charles;
 		this.normal = n;

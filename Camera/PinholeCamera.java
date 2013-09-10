@@ -45,7 +45,7 @@ public class PinholeCamera extends Camera {
 		float verticalDistanceToCenter = -t
 				+ (2 * t * (float) (y + 0.5) / (float) verticalResolution);
 		
-		Point3f p = new Point3f(horizontalDistanceToCenter, verticalDistanceToCenter, -1);
+		Point3f p = new Point3f(horizontalDistanceToCenter, -verticalDistanceToCenter, -1);
 		transformationMatrix.transform(p);
 		
 		ray.direction = VectorUtils.createVectorAB(position, p);

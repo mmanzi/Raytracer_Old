@@ -2,7 +2,7 @@ package Tracers;
 
 import java.util.Iterator;
 
-import GeometricObjects.GeometricObject;
+import GeometricObjects.AbstractGeometricObject;
 import Light.Light;
 import Utility.HitRecord;
 import Utility.RGBColor;
@@ -23,7 +23,7 @@ public class MultipleObjects extends Tracer{
 	public RGBColor trace(Ray ray){
 		//tracing
 		HitRecord hit = new HitRecord();
-		Iterator<GeometricObject> objItr= world_ptr.getObjectIterator();	
+		Iterator<AbstractGeometricObject> objItr= world_ptr.getObjectIterator();	
 		
 		while(objItr.hasNext()){
 			HitRecord new_hit = objItr.next().hit(ray);
