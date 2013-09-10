@@ -39,8 +39,11 @@ public class MovableLight extends Light{
 	}
 
 	@Override
+	/*
+	 * TODO: this should attenuate with something like 1/(dist*dist)
+	 */
 	public float getAttenuation(float d) {
-		return 1.f/(d*d);
+		return 1.f;
 	}
 
 	@Override
@@ -51,11 +54,11 @@ public class MovableLight extends Light{
 	}
 
 	public boolean isBetweenCameraAndHit(Point3f p, HitRecord h) {
-		//Vector3f a=new Vector3f(lighthit.getHitPos()),b=new Vector3f(lightsource.getpos());
-		//a.sub(hit.getHitPos());
-		//b.sub(hit.getHitPos());
-		// TODO Auto-generated method stub
-		return false;
+		Vector3f a=new Vector3f(p),b=new Vector3f(location);
+		
+		a.sub(h.getHitPos());
+		b.sub(h.getHitPos());
+		return a.length()<b.length();
 	}
 
 }

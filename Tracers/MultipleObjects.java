@@ -47,9 +47,7 @@ public class MultipleObjects extends Tracer {
 				Light lightsource = lightItr.next();
 				HitRecord lighthit = gethit(lightsource.getRayFromObject(hit
 						.getHitPos()));
-				if (!lighthit.anyHit()
-						|| !lightsource.isBetweenCameraAndHit(hit.getHitPos(),
-								lighthit)) {
+				if (!lighthit.anyHit()|| !lightsource.isBetweenCameraAndHit(hit.getHitPos(),lighthit)) {
 					color.add(hit.shade(lightsource));
 				}
 
