@@ -13,7 +13,6 @@ public class Rectangle extends AbstractGeometricObject {
 	Point3f originPoint;
 	Vector3f normal, lengthDirection;
 	Vector3f a, b;
-	float length, width;
 
 	public Rectangle(Material mat, Point3f originPoint, Vector3f normal,
 			Vector3f lengthDirection, float length, float width) {
@@ -24,8 +23,6 @@ public class Rectangle extends AbstractGeometricObject {
 		this.lengthDirection = lengthDirection; // the direction in which the
 												// rectangle points
 		this.lengthDirection.normalize();
-		this.length = length;
-		this.width = width;
 
 		a = VectorUtils.scaleVector(lengthDirection, length);
 

@@ -23,7 +23,7 @@ public class TestScene extends World{
 		vres = 1000;
 		
 		//define camera
-		camera = new PinholeCamera(new Point3f(0.f, 2.f, 5.f), 		// eye
+		camera = new PinholeCamera(new Point3f(0.f, 7.f, 20.f), 		// eye
 										new Point3f(0.f, 0.f, 0.f),  // look-at
 										new Vector3f(0.f, 1.f, 0.f),	//up
 										hres,						//horizontal resolution
@@ -38,16 +38,25 @@ public class TestScene extends World{
 		
 		//Add objects
 		Material redMat = new PhongMaterial(new RGBColor(1f, 0.5f, 0f), new RGBColor(0.5f, 0.5f, 1f), new RGBColor(0f, 1f, 0.5f), 30f);
-				
-//		Sphere sphere = new Sphere(redMat, new Point3f(1f, 0f, -4.0f), 1.f);
-//		objects.add(sphere);
-		
-//		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
-//		Plane bluePlane = new Plane(blueMat, new Point3f(0.f,-0.5f,0.f), new Vector3f(0.f, 1.f, 0.f));
-//		objects.add(bluePlane);
 
-		Rectangle rectangle1 = new Rectangle(redMat, new Point3f(-1.0f, 0.0f, 0.0f), new Vector3f(0.f, 1.f, 0.f), new Vector3f(0.f, 0.f, -1.f), 4.0f, 2.0f);
-		objects.add(rectangle1);
+		Sphere sphere = new Sphere(redMat, new Point3f(0f, 2f, 0.0f), 2f);
+		objects.add(sphere);
+
+		Sphere sphere2 = new Sphere(redMat, new Point3f(0f, 2f, -20.0f), 2f);
+		objects.add(sphere2);
+		
+		Sphere sphere3 = new Sphere(redMat, new Point3f(0f, 2f, 10.0f), 2f);
+		objects.add(sphere3);
+		
+		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
+		Plane bluePlane = new Plane(blueMat, new Point3f(0.f, 0f,0.f), new Vector3f(0.f, 1.f, 0.f));
+		objects.add(bluePlane);
+
+//		Rectangle rectangle1 = new Rectangle(redMat, new Point3f(-1.0f, 0.0f, 0.0f), new Vector3f(0.f, 1.f, 0.f), new Vector3f(0.f, 0.f, -1.f), 4.0f, 2.0f);
+//		objects.add(rectangle1);
+		
+//		Cuboid cuboid = new Cuboid(redMat, new Point3f(-1.0f, 0.0f, 0.0f), new Vector3f(1.f, 0.f, 0.f), 4f, 2f, new Vector3f(0.f, 0.f, -1.f), 3f);
+//		objects.add(cuboid);
 		
 //		Rectangle rectangle2 = new Rectangle(redMat, new Point3f(-3.0f, 1.0f, -12.0f), new Vector3f(0.f, 0.f, 1.f), new Vector3f(1.f, 0.f, 0.f), 4.0f, 2.0f);
 //		objects.add(rectangle2);
