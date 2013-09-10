@@ -31,16 +31,22 @@ public class TestScene extends World{
 										vres); 						//vertical resolution
 		
 		//define background color
-		background_color = new RGBColor(0.1f,0.1f,0.1f);
+		background_color = new RGBColor(0.5f,0.5f,0.1f);
 		
 		//define used ray tracer
 		rt = new MultipleObjects(this);
 		
 		//Add objects
-		Material redMat = new PhongMaterial(new RGBColor(1f, 0.5f, 0f), new RGBColor(0.5f, 0.5f, 1f), new RGBColor(0f, 1f, 0.5f), 30f);
-				
-		Sphere sphere = new Sphere(redMat, new Point3f(0f, 0f, -4.0f), 1.f);
+		Material redMat = new PhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f);
+			
+	//	Material redMat = new DiffuseMaterial(new RGBColor(1.f, 0.5f, 0f));
+		
+		
+		Sphere sphere = new Sphere(redMat, new Point3f(0f, 1.05f, -8.0f), 1f);
 		objects.add(sphere);
+		
+		Sphere sphere2 = new Sphere(redMat, new Point3f(0f, 3.f, -8.0f), 0.5f);
+		objects.add(sphere2);
 		
 		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
 		Plane bluePlane = new Plane(blueMat, new Point3f(0.f,-0.5f,0.f), new Vector3f(0.f, 1.f, 0.f));
@@ -49,7 +55,7 @@ public class TestScene extends World{
 		//Add light sources
 		//Light light = new MovableLight(new Vector3f(0.f,0.f,-2.5f),new RGBColor(0.2f,0.2f,0.8f));
 		//lights.add(light);
-		Light lightd = new DirectionalLight(new Vector3f(1.f,1.f,-2.5f),new RGBColor(0.5f,0.8f,0.8f));
+		Light lightd = new DirectionalLight(new Vector3f(0.f,1.f,1.f),new RGBColor(0.8f,0.8f,0.8f));
 		lights.add(lightd);
 	}
 }

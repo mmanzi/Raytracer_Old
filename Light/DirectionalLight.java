@@ -4,7 +4,11 @@ import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
 
+
+
+import Utility.HitRecord;
 import Utility.RGBColor;
+import Utility.Ray;
 
 /**
  * It is assumed this light is at the origin (0,0,0) and is white
@@ -37,6 +41,16 @@ public class DirectionalLight extends Light{
 	@Override
 	public float getAttenuation(float d) {
 		return 1.f;
+	}
+
+	@Override
+	public Ray getRayFromObject(Point3f p) {
+		return new Ray(new Point3f(p),new Vector3f(direction));
+	}
+
+	@Override
+	public boolean isBetweenCameraAndHit(Point3f p, HitRecord h) {
+		return true;
 	}
 
 }

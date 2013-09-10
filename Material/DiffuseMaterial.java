@@ -28,9 +28,8 @@ public  class DiffuseMaterial extends Material{
 		Vector3f theta = new Vector3f(l.getIncomingRay(hit.getHitPos()));
 		mc.mult(l.getAttenuation(theta.length()));
 		theta.normalize();
-		n.negate();
 		mc.mult(lc);
-		mc.mult(Math.abs(n.dot(theta)));
+		mc.mult(Math.max(n.dot(theta),0));
 		return mc;
 	}
 

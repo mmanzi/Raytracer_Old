@@ -3,7 +3,9 @@ package Light;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
+import Utility.HitRecord;
 import Utility.RGBColor;
+import Utility.Ray;
 
 
 /**
@@ -17,7 +19,11 @@ public abstract class Light {
 
 	public abstract Vector3f getIncomingRay(Point3f p);
 	
+	public abstract boolean isBetweenCameraAndHit(Point3f p,HitRecord h);
+	
 	public abstract float getAttenuation(float d);
+	
+	public abstract Ray getRayFromObject(Point3f p);
 	
 	public abstract RGBColor getColor();
 }
