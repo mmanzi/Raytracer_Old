@@ -31,5 +31,10 @@ public  class TrivialMaterial extends Material{
 		return new RGBColor(0f,0f,0f);
 	}
 
+	@Override
+	public RGBColor refractionshade(HitRecord hit, Tracer t) {
+		return new RGBColor(0f,0f,0f);
+	}
+
 
 }

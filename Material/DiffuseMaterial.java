@@ -29,6 +29,7 @@ public  class DiffuseMaterial extends Material{
 		RGBColor mc = new RGBColor(color);
 		Vector3f n = new Vector3f(hit.getNormal());
 		Vector3f theta = new Vector3f(l.getIncomingRay(hit.getHitPos()));
+		theta.negate();
 		mc.mult(l.getAttenuation(theta.length()));
 		theta.normalize();
 		mc.mult(lc);
@@ -40,7 +41,11 @@ public  class DiffuseMaterial extends Material{
 	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
 		return new RGBColor(0f,0f,0f);
 	}
-
+	
+	@Override
+	public RGBColor refractionshade(HitRecord hit, Tracer t) {
+		return new RGBColor(0f,0f,0f);
+	}
 
 }
 

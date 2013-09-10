@@ -56,7 +56,7 @@ public class Sphere extends AbstractGeometricObject {
 			
 			// record hit
 			Vector3f surfaceNormal = VectorUtils.createVectorAB(center, hitPoint);
-			surfaceNormal.normalize();
+			surfaceNormal.normalize();surfaceNormal.negate();
 			hit.recordHit(this, ray, surfaceNormal, hitPoint, t);
 		}
 

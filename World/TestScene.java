@@ -23,7 +23,7 @@ public class TestScene extends World{
 		vres = 1000;
 		
 		//define camera
-		camera = new PinholeCamera(new Point3f(0.f, 7.f, 20.f), 		// eye
+		camera = new PinholeCamera(new Point3f(0.f, 5.f, 20.f), 		// eye
 										new Point3f(0.f, 0.f, 0.f),  // look-at
 										new Vector3f(0.f, 1.f, 0.f),	//up
 										hres,						//horizontal resolution
@@ -50,7 +50,6 @@ public class TestScene extends World{
 		
 		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
 		Plane bluePlane = new Plane(blueMat, new Point3f(0.f, 0f,0.f), new Vector3f(0.f, 1.f, 0.f));
-		objects.add(bluePlane);
 
 //		Rectangle rectangle1 = new Rectangle(redMat, new Point3f(-1.0f, 0.0f, 0.0f), new Vector3f(0.f, 1.f, 0.f), new Vector3f(0.f, 0.f, -1.f), 4.0f, 2.0f);
 //		objects.add(rectangle1);

@@ -6,22 +6,25 @@ import Light.Light;
 import Tracers.Tracer;
 import Utility.HitRecord;
 import Utility.RGBColor;
+import Utility.Ray;
 
 /**
  *  A trivial unicolor material
  */
-public  class PhongMaterial extends Material{
+public  class RefractingPhongMaterial extends Material{
 
 	RGBColor diffusecolor,ambientcolor,specularcolor;
 	float shininess;
-	public float reflectivity=0f;
+	Tracer trace;
 	
-	public PhongMaterial(RGBColor dcolor,RGBColor acolor,RGBColor scolor,float s){
+	public RefractingPhongMaterial(RGBColor dcolor,RGBColor acolor,RGBColor scolor,float s,float r,Tracer t,float ref){
 		this.diffusecolor = dcolor;
 		this.ambientcolor = acolor;
 		this.specularcolor = scolor;
 		this.shininess = s;
-		this.reflectivity=0f;
+		this.reflectivity=r;
+		this.trace=t;
+		this.refractionindex=ref;
 	}
 	
 	/**
@@ -54,24 +57,49 @@ public  class PhongMaterial extends Material{
 		
 		specularc.mult((float)Math.pow(h.dot(n),shininess));
 		specularc.mult(lc);
-		
 		erg.add(specularc);
-		
 		erg.add(ambientcolor);
-		
 		
 		return erg;
 	}
 
 	@Override
 	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
-		return new RGBColor(0f,0f,0f);
+		
+		Vector3f v=new Vector3f(hit.getNormal());
+		v.scale((-2*(hit.getRay().direction).dot(hit.getNormal())));
+		v.add(hit.getRay().direction);
+		Ray ray=new Ray(hit.getHitPos(),v);
+		
+		return new RGBColor(t.trace(ray));
 	}
 	
 	@Override
 	public RGBColor refractionshade(HitRecord hit, Tracer t) {
-		return new RGBColor(0f,0f,0f);
+		float  n1 =hit.getRay().refractionindex;
+		float n2=(n1==1f? this.refractionindex : 1);
+		
+		Vector3f dir = new Vector3f( hit.getRay().direction );
+		dir.normalize();
+		dir.negate();
+		
+		float theta1 = (float) Math.acos(dir.dot(hit.getNormal()));
+		float theta2 = (float) Math.asin((Math.sin(theta1)*n1)/n2);
+		
+		dir.negate();
+		Vector3f r = new Vector3f(dir);
+		r.scale(n1/n2);
+		
+		Vector3f s = new Vector3f(hit.getNormal());
+		s.scale((float)((n1/n2)*Math.cos(theta1)+Math.cos(theta2)));
+		r.add(s);
+		r.negate();
+		
+		Ray ray=new Ray(hit.getHitPos(),r,n2);
+		
+		return new RGBColor(t.trace(ray));
 	}
+
 
 }
 

@@ -14,7 +14,7 @@ public class MultipleObjects extends Tracer {
 	public MultipleObjects(World w) {
 		super(w);
 	}
-
+	static int dept=0;
 	/**
 	 * This simple tracer iterates over all objects and light sources
 	 * 
@@ -54,9 +54,21 @@ public class MultipleObjects extends Tracer {
 				}
 
 				color.mult(1 - hit.getreflectivity());
-				RGBColor mirrorc = new RGBColor(hit.mirrorshade(this));
-				mirrorc.mult(hit.getreflectivity());
-				color.add(mirrorc);
+				++dept;
+				if(dept<=3)
+				{
+					RGBColor mirrorc = new RGBColor(hit.mirrorshade(this));
+					mirrorc.mult(hit.getreflectivity());
+					color.add(mirrorc);
+				}
+				/*if(dept<=3)
+				{
+					RGBColor refrcc = new RGBColor(hit.refrectionshade(this));
+					refrcc.mult(hit.getrefractivity());
+					color.add(refrcc);
+				}*/
+				--dept;
+				
 			}
 			return color;
 		} else {
