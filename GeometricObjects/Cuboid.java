@@ -26,12 +26,12 @@ public class Cuboid extends AbstractGeometricObject{
 	}
 
 	private void setUpFaces() {
-		Rectangle  
+		//Rectangle  
 	}
 	
 	@Override
 	public HitRecord hit(Ray ray) {
-		
+		return new HitRecord();
 	}
 
 }

@@ -35,6 +35,7 @@ public  class PhongMaterial extends Material{
 		RGBColor diffusec = new RGBColor(diffusecolor);
 		Vector3f n = new Vector3f(hit.getNormal());
 		Vector3f theta = new Vector3f(l.getIncomingRay(hit.getHitPos()));
+		theta.negate();
 		diffusec.mult(l.getAttenuation(theta.length()));
 		theta.normalize();
 		diffusec.mult(lc);
@@ -43,7 +44,7 @@ public  class PhongMaterial extends Material{
 		
 		RGBColor specularc = new RGBColor(specularcolor);
 		Vector3f Lightdir = new Vector3f(l.getIncomingRay(hit.getHitPos()));
-	//	Lightdir.negate();
+		Lightdir.negate();
 		Vector3f Camdir = new Vector3f(hit.getRay().direction);
 		Camdir.negate();
 		
