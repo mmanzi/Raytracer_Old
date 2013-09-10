@@ -2,8 +2,6 @@ package Tracers;
 
 import java.util.Iterator;
 
-import javax.vecmath.Vector3f;
-
 import GeometricObjects.GeometricObject;
 import Light.Light;
 import Utility.HitRecord;
@@ -50,6 +48,11 @@ public class MultipleObjects extends Tracer {
 				if (!lighthit.anyHit()||!lightsource.isBetweenCameraAndHit(hit.getHitPos(), lighthit)) {
 					color.add(hit.shade(lightsource));
 				}
+				
+				color.mult(1-hit.getreflectivity());
+				RGBColor mirrorc=new RGBColor(hit.mirrorshade(this));
+				mirrorc.mult(hit.getreflectivity());  
+				color.add(mirrorc);
 			}
 			return color;
 		}

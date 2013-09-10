@@ -17,7 +17,7 @@ import Tracers.*;
 public class TestScene extends World{
 
 	
-	protected void build(){
+	protected void build(Tracer t){
 		
 		//define image resolution
 		hres = 2000;

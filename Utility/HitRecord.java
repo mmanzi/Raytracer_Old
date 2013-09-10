@@ -5,6 +5,7 @@ import javax.vecmath.Vector3f;
 
 import GeometricObjects.GeometricObject;
 import Light.Light;
+import Tracers.Tracer;
 
 /**
  * This class stores all relevant information of an intersection for further use.
@@ -52,6 +53,14 @@ public class HitRecord {
 	 */
 	public RGBColor shade(Light l){
 		return obj.getMaterial().shade(this, l);
+	}
+	
+	public RGBColor mirrorshade(Tracer t){
+		return obj.getMaterial().mirrorshade(this,t);
+	}
+	
+	public float getreflectivity(){
+		return obj.getMaterial().getreflectivity();
 	}
 	
 	/**
