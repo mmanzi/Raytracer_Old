@@ -59,16 +59,8 @@ public class HitRecord {
 		return obj.getMaterial().mirrorshade(this,t);
 	}
 	
-	public float getreflectivity(){
-		return obj.getMaterial().reflectivity;
-	}
-	
 	public RGBColor refrectionshade(Tracer t){
 		return obj.getMaterial().refractionshade(this,t);
-	}
-	
-	public float getrefractivity(){
-		return obj.getMaterial().refractivity;
 	}
 	
 	/**

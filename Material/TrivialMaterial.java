@@ -2,7 +2,6 @@ package Material;
 
 
 import Light.Light;
-import Tracers.Tracer;
 import Utility.HitRecord;
 import Utility.RGBColor;
 
@@ -21,20 +20,8 @@ public  class TrivialMaterial extends Material{
 	/**
 	 * Trivial simply returns the materials color
 	 **/
-	@Override
 	public RGBColor shade(HitRecord hit, Light l) {
 		return color;
 	}
-
-	@Override
-	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
-		return new RGBColor(0f,0f,0f);
-	}
-
-	@Override
-	public RGBColor refractionshade(HitRecord hit, Tracer t) {
-		return new RGBColor(0f,0f,0f);
-	}
-
-
+	
 }

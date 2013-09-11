@@ -44,10 +44,12 @@ public class Scene2 extends World {
 		//define used ray tracer
 		
 		//Add objects
-//		Material redMat = new PhongMaterial(new RGBColor(1f, 0.f, 0f));
+
+
 		Material redMat = new PhongMaterial(new RGBColor(0.5f, 0.5f, 1f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f);
 //		Material redMat = new DiffuseMaterial(new RGBColor(1f, 0.f, 0f));
 			
+
 	//	Material redMat = new DiffuseMaterial(new RGBColor(1.f, 0.5f, 0f));
 		
 //		Cuboid thingy = new Cuboid(redMat, new Point3f(-4f, 4f, 0f), new Vector3f(1f, 0f, 0f), 2f, 4f, new Vector3f(0f, 0f, -1f), 6f);
@@ -57,10 +59,12 @@ public class Scene2 extends World {
 	//	Sphere sphere = new Sphere(redMat, new Point3f(0f, 1f, -8f), 0.5f);
 		//objects.add(sphere);
 		
+
 		//Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
 		Material blueMat = new DiffuseMaterial(new RGBColor(1f, 1f, 1f));
 		Plane blue2Plane = new Plane(blueMat, new Point3f(0.f,-2f,0.f), new Vector3f(0.f, 1.f, 0.f));
 		objects.add(blue2Plane);
+
 
 		Plane bluePlane = new Plane(blueMat, new Point3f(0.f,2.f,0.f), new Vector3f(0.f, -1.f, 0.f));
 		objects.add(bluePlane);
