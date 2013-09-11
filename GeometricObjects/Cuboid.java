@@ -50,7 +50,7 @@ public class Cuboid extends AbstractGeometricObject {
 		leftNormal.negate();
 
 		Vector3f topNormal = new Vector3f(heightDirection);
-		Vector3f bottomNormal = new Vector3f(depthDirection);
+		Vector3f bottomNormal = new Vector3f(heightDirection);
 		bottomNormal.negate();
 
 		Point3f rightOriginPoint = new Point3f(originPoint);
@@ -72,16 +72,16 @@ public class Cuboid extends AbstractGeometricObject {
 //		// back
 		faces[1] = new Rectangle(mat, backOriginPoint, backNormal, leftNormal,
 				width, height);
-////
-////		// left
+//
+//		// left
 		faces[2] = new Rectangle(mat, leftOriginPoint, leftNormal, frontNormal,
 				depth, height);
-////
-////		// right
+//
+//		// right
 		faces[3] = new Rectangle(mat, rightOriginPoint, rightNormal,
 				depthDirection, depth, height);
 //
-////		// bottom
+//		// bottom
 		faces[4] = new Rectangle(mat, originPoint, bottomNormal,
 				depthDirection, depth, width);
 //		// top
