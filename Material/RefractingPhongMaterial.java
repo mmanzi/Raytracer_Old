@@ -25,6 +25,7 @@ public  class RefractingPhongMaterial extends Material{
 		this.reflectivity=r;
 		this.trace=t;
 		this.refractionindex=ref;
+		this.refractivity=0.3f;
 	}
 	
 	/**
@@ -59,7 +60,8 @@ public  class RefractingPhongMaterial extends Material{
 		specularc.mult(lc);
 		erg.add(specularc);
 		erg.add(ambientcolor);
-		
+		erg.mult(1 - reflectivity);
+
 		return erg;
 	}
 
@@ -70,8 +72,9 @@ public  class RefractingPhongMaterial extends Material{
 		v.scale((-2*(hit.getRay().direction).dot(hit.getNormal())));
 		v.add(hit.getRay().direction);
 		Ray ray=new Ray(hit.getHitPos(),v);
-		
-		return new RGBColor(t.trace(ray));
+		RGBColor q = new RGBColor(t.trace(ray));
+		q.mult(reflectivity);
+		return q;
 	}
 	
 	@Override
@@ -84,7 +87,7 @@ public  class RefractingPhongMaterial extends Material{
 		dir.negate();
 		
 		float theta1 = (float) Math.acos(dir.dot(hit.getNormal()));
-		float theta2 = (float) Math.asin((Math.sin(theta1)*n1)/n2);
+		float theta2 = (float) Math.asin((/*Math.sin*/(theta1)*n1)/n2);
 		
 		dir.negate();
 		Vector3f r = new Vector3f(dir);
@@ -96,8 +99,9 @@ public  class RefractingPhongMaterial extends Material{
 		r.negate();
 		
 		Ray ray=new Ray(hit.getHitPos(),r,n2);
-		
-		return new RGBColor(t.trace(ray));
+		RGBColor q = new RGBColor(t.trace(ray));
+		q.mult(refractivity);
+		return q;
 	}
 
 

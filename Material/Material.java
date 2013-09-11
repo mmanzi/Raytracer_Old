@@ -12,12 +12,19 @@ import Utility.RGBColor;
 
 public abstract class Material {
 	
-	public float reflectivity,refractionindex=1.0f,refractivity=1.0f;
+	public float reflectivity=0.0f,refractionindex=1.0f,refractivity=0.0f;
 	
-	public abstract RGBColor shade(HitRecord hit, Light l);
+	public RGBColor shade(HitRecord hit, Light l)
+	{
+		return new RGBColor(0f,0f,0f);
+	}
 	
-	public abstract RGBColor mirrorshade(HitRecord hit, Tracer t);
+	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
+		return new RGBColor(0f,0f,0f);
+	}
 	
-	public abstract RGBColor refractionshade(HitRecord hit, Tracer t);
+	public RGBColor refractionshade(HitRecord hit, Tracer t) {
+		return new RGBColor(0f,0f,0f);
+	}
 
 }

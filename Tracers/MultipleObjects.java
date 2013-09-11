@@ -51,20 +51,11 @@ public class MultipleObjects extends Tracer {
 					color.add(hit.shade(lightsource));
 				}
 
-				color.mult(1 - hit.getreflectivity());
 				++dept;
 				if(dept<=3)
-				{
-					RGBColor mirrorc = new RGBColor(hit.mirrorshade(this));
-					mirrorc.mult(hit.getreflectivity());
-					color.add(mirrorc);
-				}
-				/*if(dept<=3)
-				{
-					RGBColor refrcc = new RGBColor(hit.refrectionshade(this));
-					refrcc.mult(hit.getrefractivity());
-					color.add(refrcc);
-				}*/
+					color.add(new RGBColor(hit.mirrorshade(this)));
+				if(dept<=3)
+					color.add(new RGBColor(hit.refrectionshade(this)));
 				--dept;
 				
 			}

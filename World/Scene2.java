@@ -40,7 +40,7 @@ public class Scene2 extends World{
 
 //		Material redMat = new PhongMaterial(new RGBColor(1f, 0.f, 0f));
 //		Material redMat = new PhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f);
-		Material redMat = new MirrorPhongMaterial(new RGBColor(1f, 0.f, 0f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f,0.5f,t);
+		Material redMat = new RefractingPhongMaterial(new RGBColor(1f, 1.f, 1f), new RGBColor(0.0f, 0.f, 0.0f), new RGBColor(0f, 0f, 0f), 300.f,0.0f,t,1.5f);
 
 	//	Material redMat = new DiffuseMaterial(new RGBColor(1.f, 0.5f, 0f));
 		
@@ -50,7 +50,7 @@ public class Scene2 extends World{
 		
 
 		//Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
-		Material blueMat = new MirrorPhongMaterial(new RGBColor(1f, 1f, 1f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f,0.9f,t);
+		Material blueMat = new MirrorPhongMaterial(new RGBColor(1f, 1f, 1f), new RGBColor(0.0f, 0.01f, 0.0f), new RGBColor(0f, 1f, 0.5f), 300.f,0.4f,t);
 		Plane bluePlane = new Plane(blueMat, new Point3f(0.f,-2f,0.f), new Vector3f(0.f, 1.f, 0.f));
 		objects.add(bluePlane);
 

@@ -48,8 +48,8 @@ public class TestScene extends World{
 		Sphere sphere3 = new Sphere(redMat, new Point3f(0f, 2f, 10.0f), 2f);
 		objects.add(sphere3);
 		
-		Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
-		Plane bluePlane = new Plane(blueMat, new Point3f(0.f, 0f,0.f), new Vector3f(0.f, 1.f, 0.f));
+		//Material blueMat = new DiffuseMaterial(new RGBColor(0.0f, 0.0f, 1.f));
+		//Plane bluePlane = new Plane(blueMat, new Point3f(0.f, 0f,0.f), new Vector3f(0.f, 1.f, 0.f));
 
 //		Rectangle rectangle1 = new Rectangle(redMat, new Point3f(-1.0f, 0.0f, 0.0f), new Vector3f(0.f, 1.f, 0.f), new Vector3f(0.f, 0.f, -1.f), 4.0f, 2.0f);
 //		objects.add(rectangle1);

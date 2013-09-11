@@ -3,7 +3,6 @@ package Material;
 import javax.vecmath.Vector3f;
 
 import Light.Light;
-import Tracers.Tracer;
 import Utility.HitRecord;
 import Utility.RGBColor;
 
@@ -61,16 +60,6 @@ public  class PhongMaterial extends Material{
 		
 		
 		return erg;
-	}
-
-	@Override
-	public RGBColor mirrorshade(HitRecord hit,Tracer t) {
-		return new RGBColor(0f,0f,0f);
-	}
-	
-	@Override
-	public RGBColor refractionshade(HitRecord hit, Tracer t) {
-		return new RGBColor(0f,0f,0f);
 	}
 
 }
